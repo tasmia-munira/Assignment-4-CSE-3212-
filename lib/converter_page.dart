@@ -10,6 +10,30 @@ class _ConverterPageState extends State<ConverterPage> {
   String _result = "";
 
   
+  void _convertToMiles() {
+    double km = double.tryParse(_controller.text) ?? 0;
+    double miles = km * 0.621371;
+    setState(() {
+      _result = "$km km = ${miles.toStringAsFixed(2)} miles";
+    });
+  }
+
+  void _convertToKm() {
+    double miles = double.tryParse(_controller.text) ?? 0;
+    double km = miles / 0.621371;
+    setState(() {
+      _result = "$miles miles = ${km.toStringAsFixed(2)} km";
+    });
+  }
+
+  void _clear() {
+    _controller.clear();
+    setState(() {
+      _result = "";
+    });
+  }
+
+  
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -51,7 +75,35 @@ class _ConverterPageState extends State<ConverterPage> {
                           ),
                         ),
                       ),
-                      
+                      SizedBox(height: 20),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                        children: [
+                          ElevatedButton.icon(
+                            onPressed: _convertToMiles,
+                            label: Text("Km → Miles"),
+                            style: ElevatedButton.styleFrom(
+                              backgroundColor: const Color.fromARGB(255, 61, 226, 55),
+                            ),
+                          ),
+                          ElevatedButton.icon(
+                            onPressed: _convertToKm,
+                            label: Text("Miles → Km"),
+                            style: ElevatedButton.styleFrom(
+                              backgroundColor: const Color.fromARGB(255, 57, 171, 247),
+                            ),
+                          ),
+                        ],
+                      ),
+                      SizedBox(height: 10),
+                      ElevatedButton.icon(
+                        onPressed: _clear,
+                        label: Text("Clear"),
+                        style: ElevatedButton.styleFrom(
+                          backgroundColor: const Color.fromARGB(255, 245, 128, 128),
+                        ),
+                      ),
+
                     ],
                   ),
                 ),
