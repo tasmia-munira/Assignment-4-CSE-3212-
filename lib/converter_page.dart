@@ -108,7 +108,12 @@ class _ConverterPageState extends State<ConverterPage> {
                   ),
                 ),
               ),
-              
+              SizedBox(height: 30),
+              Text(
+                _result.isEmpty ? "Result" : _result,
+                style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                textAlign: TextAlign.center,
+              ),
             ],
           ),
         ),
