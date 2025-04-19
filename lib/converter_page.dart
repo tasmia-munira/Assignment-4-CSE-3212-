@@ -20,6 +20,47 @@ class _ConverterPageState extends State<ConverterPage> {
         centerTitle: true,
         elevation: 4,
       ),
+      body: SingleChildScrollView(
+        padding: EdgeInsets.all(20),
+        child: Center(
+          child: Column(
+            children: [
+              Card(
+                elevation: 4,
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(15),
+                ),
+                child: Padding(
+                  padding: EdgeInsets.all(20),
+                  child: Column(
+                    children: [
+                      Icon(Icons.swap_horiz, size: 50, color: const Color.fromARGB(255, 7, 201, 181)),
+                      SizedBox(height: 10),
+                      Text(
+                        "Enter value to convert",
+                        style: TextStyle(fontSize: 18),
+                      ),
+                      SizedBox(height: 10),
+                      TextField(
+                        controller: _controller,
+                        keyboardType: TextInputType.number,
+                        decoration: InputDecoration(
+                          hintText: "Enter number",
+                          border: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(10),
+                          ),
+                        ),
+                      ),
+                      
+                    ],
+                  ),
+                ),
+              ),
+              
+            ],
+          ),
+        ),
+      ),
       
     );
   }
